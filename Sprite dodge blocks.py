@@ -28,7 +28,6 @@ class Bad_block(pygame.sprite.Sprite):
         self.change_y = random.randrange(1,4)
         self.left_boundary = 0
         self.right_boundary = 700
-        self.top_boundary = 0
         self.bottom_boundary = 520
 
     def move(self):
@@ -41,9 +40,7 @@ class Bad_block(pygame.sprite.Sprite):
             self.change_x = random.randrange(1,2)
         if self.rect.bottom >= self.bottom_boundary:
             self.rect.y = (-10)
-        if self.rect.top <= self.top_boundary:
-            self.rect.x = random.randrange(screen_width-20)
-
+       
 
 
 class Bullet(pygame.sprite.Sprite):
@@ -126,6 +123,9 @@ while not done:
                 change_x = (5)
                 
             if event.key == pygame.K_UP:
+                change_y = (0)
+            
+            if event.key == pygame.K_SPACE: 
                 bullet = Bullet(RED ,5, 5)
                 bullet.rect.x = player.rect.x + 7.5
                 bullet.rect.y = player.rect.y - 5
